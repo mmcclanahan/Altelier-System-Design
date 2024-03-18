@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start1": "npx nodemon --watch server SQL/server1.js",
+    "start2": "npx nodemon --watch server NoSql/server2.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,12 @@
   },
   "homepage": "https://github.com/Gucci-GUIs/Products-michael#readme",
   "dependencies": {
+    "axios": "^1.6.8",
+    "bluebird": "^3.7.2",
     "dotenv": "^16.4.5",
-    "express": "^4.18.3"
+    "express": "^4.18.3",
+    "mongoose": "^8.2.2",
+    "mysql2": "^3.9.2",
+    "nodemon": "^3.1.0"
   }
 }
