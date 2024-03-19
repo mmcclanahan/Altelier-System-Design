@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-//mongoose.connect()
+mongoose.connect()
 const ProductSchema = mongoose.Schema({
     id: Number,
     name: String,
