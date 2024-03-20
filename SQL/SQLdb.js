@@ -45,9 +45,18 @@ const relatedProductsData = [
 ];*/
 //end of mock data
 //product
+//category table?
+//mostly getting a specific produc tby id and getting its styles, photos, skus and features
+//every customer is gonna load a products details
+//might have to change data model based on whats taking the most query load
+//normalalization can store in
+//think of a document with keys shipTO adress could be stored instead in user document
+//database thats denormalized for fast look up
+//database for normalized for writing
+//index if id is indexed data structure with constant time
 db.query('INSERT INTO Products SET ?', productData, (err, result) => {
   if (err) {
-    console.error('Error product', err);
+    console.error('err product', err);
     return;
   }
   //style

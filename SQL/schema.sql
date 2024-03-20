@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS PRODUCTS;
 CREATE DATABASE PRODUCTS;
 USE PRODUCTS;
 DROP TABLE IF EXISTS Features;
@@ -49,5 +50,4 @@ CREATE TABLE RelatedProducts (
   product_id INT,
   related_product_id INT,
   FOREIGN KEY (product_id) REFERENCES Products(product_id),
-  FOREIGN KEY (related_product_id) REFERENCES Products(product_id)
 );
