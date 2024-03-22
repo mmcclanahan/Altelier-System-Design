@@ -49,7 +49,7 @@ const csvStringifier = createCsvStringifier({
 
 // define paths for the read and write streams
 let readStream = fs.createReadStream("./data/product.csv");
-let writeStream = fs.createWriteStream("./data/cleanProduct.csv");
+let writeStream = fs.createWriteStream("./data/productClean.csv");
 
 // create an instance of the CSV cleaner with writable object mode set to true
 const transformer = new CSVCleaner({ writableObjectMode: true });

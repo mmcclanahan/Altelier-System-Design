@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
-const { Product, Feature, Style, StylePhoto, SKU, RelatedProduct } = require('./models');
-
+const { Product, Feature, Style, StylePhoto, SKU, RelatedProduct } = require('./denormModels');
+//this isnt needed when i load data it will create a PRODUCTS db and the schema is imported and used to create collections will happen in the load All
 mongoose.connect('mongodb://localhost/PRODUCTS')
+  .then(() => {
+    console.log('connected to mongodb')
+  })
+  .catch((err) => {
+    console.log('ERROR CONNECTING TO MONGODB', err)
+  })
 //dummy data
 const productData = {
   product_id: 1,

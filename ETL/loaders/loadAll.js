@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const csv = require('csv-parser');
-const { Product, Style, Feature, StylePhoto, SKU, RelatedProduct } = require('../NoSql/models');
+const { Product, Style, Feature, StylePhoto, SKU, RelatedProduct } = require('../NoSql/denormModels');
 
 mongoose.connect('mongodb://localhost/PRODUCTS', { useNewUrlParser: true, useUnifiedTopology: true });
 //make sure both arrays are lines up in order
