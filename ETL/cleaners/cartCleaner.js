@@ -10,21 +10,16 @@ class CSVCleaner extends Transform {
     super(options);
   }
   _transform(chunk, encoding, next) {
-    // Clean and transform the data here
-    // Example: Remove whitespace and filter out non-numeric characters
-    // Write the cleaned data to the output stream
-    // Call the callback function to proceed to the next chunk
+    //trim whitespace
     for (let key in chunk) {
-      // Trims whitespace
-      let trimKey = key.trim();
-      chunk[trimKey] = chunk[key];
-      if (key !== trimKey) {
-        delete chunk[key];
+      if (chunk.hasOwnProperty(key)) {
+        chunk[key] = chunk[key].trim();
       }
     }
-    //this is changing the original id header to product_id making sure the id is not left out just mapped to product_id
-    chunk.style_id = chunk.styleId;
-    // uses our csvStringifier to turn our chunk into a csv string
+    chunk.session = chunk.user_session;
+    chunk.sku_id = chunk.product_id;
+    chunk.active = chunk.active === '1' ? true: false;
+
     chunk = csvStringifier.stringifyRecords([chunk]);
     this.push(chunk);
     next();
@@ -34,16 +29,15 @@ class CSVCleaner extends Transform {
 // define the CSV stringifier for headers
 const csvStringifier = createCsvStringifier({
   header: [
-    { id: "id", title: "id" },
-    { id: "style_id", title: "style_id" },
-    { id: "url", title: "url" },
-    { id: "thumbnail_url", title: "description" }
+    { id: "session", title: "session" },
+    { id: "sku_id", title: "sku_id" },
+    { id: "active", title: "active" }
   ]
 });
 
 // define paths for the read and write streams
-let readStream = fs.createReadStream("./data/photos.csv");
-let writeStream = fs.createWriteStream("./data/photosClean.csv");
+let readStream = fs.createReadStream("./data/cart.csv");
+let writeStream = fs.createWriteStream("./data/cartC.csv");
 
 // create an instance of the CSV cleaner with writable object mode set to true
 const transformer = new CSVCleaner({ writableObjectMode: true });
@@ -57,5 +51,5 @@ readStream
   .pipe(transformer)
   .pipe(writeStream)
   .on("finish", () => {
-    console.log("Data cleaning finished.");
+    console.log("cart cleaning finished.");
   });

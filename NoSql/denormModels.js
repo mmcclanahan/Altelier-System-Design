@@ -29,18 +29,31 @@ const stylePhotoSchema = new mongoose.Schema({
   }]
 });
 const skuSchema = new mongoose.Schema({
-  skuNumber: {type: String, index: true},
-  quantity: Number,
-  size: String
+  style_id: {type: Number, index: true},
+  skus:[{
+    skuNumber: String,
+    size: String,
+    quantity: Number
+  }]
 });
 const relatedProductsSchema =  mongoose.Schema({
     product_id: {type: Number, index: true, unique: true},
     related_ids: [Number]
 });
 const cartSchema = mongoose.Schema({
+  session: Number,
   sku_id: Number,
-  count: Number
+  active: Boolean
 });
+const ratingsSchema = mongoose.Schema({
+  product_id: {type: Number, index:true},
+  oneStar: {type:Number},
+  twoStar: {type:Number},
+  threeStar: {type:Number},
+  fourStar: {type:Number},
+  fiveStar: {type:Number},
+
+})
 //models
 module.exports = {
   Product: mongoose.model('Product', productSchema),
@@ -48,6 +61,8 @@ module.exports = {
   Style: mongoose.model('Style', styleSchema),
   StylePhoto: mongoose.model('StylePhoto', stylePhotoSchema),
   SKU: mongoose.model('SKU', skuSchema),
-  RelatedProduct: mongoose.model('RelatedProduct', relatedProductsSchema)
+  RelatedProduct: mongoose.model('RelatedProduct', relatedProductsSchema),
+  Cart: mongoose.model('Cart', cartSchema),
+  Rating: mongoose.model('Rating', ratingsSchema)
 };
 

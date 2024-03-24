@@ -10,16 +10,10 @@ class CSVCleaner extends Transform {
     super(options);
   }
   _transform(chunk, encoding, next) {
-    // Clean and transform the data here
-    // Example: Remove whitespace and filter out non-numeric characters
-    // Write the cleaned data to the output stream
-    // Call the callback function to proceed to the next chunk
-    for (let key in chunk) {
-      // Trims whitespace
-      let trimKey = key.trim();
-      chunk[trimKey] = chunk[key];
-      if (key !== trimKey) {
-        delete chunk[key];
+    //trim whitespace
+    for (let key in row) {
+      if (row.hasOwnProperty(key)) {
+        row[key] = row[key].trim();
       }
     }
     // filters out all non-number characters

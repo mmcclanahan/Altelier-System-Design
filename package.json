@@ -2,15 +2,14 @@
   "name": "products-michael",
   "version": "1.0.0",
   "description": "Products - Michael",
-  "main": "index.js",
+  "main": "Server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start1": "npx nodemon --watch server SQL/server1.js",
-    "start2": "npx nodemon --watch server NoSql/server2.js",
     "runDB": "node SQL/SQLdb.js",
     "buildDB": "node NoSql/db.js",
     "clean": "node cleaners/cleaner.js",
-    "load": "node loaders/loadAll.js"
+    "load": "node loaders/loadAll.js",
+    "server": "npx nodemon --watch Server/server.js"
   },
   "repository": {
     "type": "git",
