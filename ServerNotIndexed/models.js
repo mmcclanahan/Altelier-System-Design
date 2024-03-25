@@ -1,4 +1,4 @@
-const {Product, Feature, Style, StylePhoto, SKU, RelatedProduct, Cart} = require('./db.js');
+const {Product, Feature, Style, StylePhoto, SKU, RelatedProduct, Cart} = require('./dbNotIndexed.js');
 //make model functions
 module.exports= {
   getProductById: function(id) {
@@ -9,64 +9,6 @@ module.exports= {
       .catch((error) => {
         return error;
       });
-  },
-  getStyle: function(id) {
-    return Style.aggregate([
-      {
-        $match: {
-          product_id: 1
-        }
-      },
-      {
-        $lookup: {
-          from: "stylephotos",
-          localField: "style_id",
-          foreignField: "style_id",
-          as: "photos"
-        }
-      },
-      {
-        $lookup: {
-          from: "skus",
-          localField: "style_id",
-          foreignField: "style_id",
-          as: "skus"
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          product_id: 1,
-          style_id: 1,
-          name: 1,
-          sale_price: 1,
-          original_price: 1,
-          default_style: 1,
-          photos: { $arrayElemAt: ["$photos.photos", 0] },
-          skus: { $arrayElemAt: ["$skus.skus", 0] }
-        }
-      },
-      {
-        $addFields: {
-          product_id: "$product_id"
-        }
-      },
-      {
-        $group: {
-          _id: "$product_id",
-          results: {
-            $push: "$$ROOT"
-          }
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          product_id: "$_id",
-          results: 1
-        }
-      }
-    ])
   },
   getAll: function(id) {
     productId = parseInt(id);

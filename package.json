@@ -5,11 +5,9 @@
   "main": "Server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "runDB": "node SQL/SQLdb.js",
-    "buildDB": "node NoSql/db.js",
-    "clean": "node cleaners/cleaner.js",
-    "load": "node loaders/loadAll.js",
-    "server": "npx nodemon --watch Server/server.js"
+    "server": "npx nodemon --watch Server/server.js",
+    "serverss": "npx nodemon --watch ServerNotIndexed/server.js",
+    "k6": "k6 run k6.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +27,7 @@
     "csv-writer": "^1.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
+    "k6": "^0.0.0",
     "mongoose": "^8.2.2",
     "mysql2": "^3.9.2",
     "nodemon": "^3.1.0",

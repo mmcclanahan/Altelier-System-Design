@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const csv = require('csv-parser');
-const { Product } = require('../../NoSql/denormModels');
+const { Product } = require('../../Server/db.js');
 
-mongoose.connect('mongodb://localhost/PRODUCTS', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/PROD', { useNewUrlParser: true, useUnifiedTopology: true });
 //db.products.explain("executionStats").find({ id: 9999 })
 
 

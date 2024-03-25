@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const csv = require('csv-parser');
-const { SKU } = require('../../NoSql/denormModels');
+const { SKU } = require('../../Server/db.js');
 
-mongoose.connect('mongodb://localhost/PRODUCTS', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/PROD', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const batchSize = 1000;
 let batch = [];

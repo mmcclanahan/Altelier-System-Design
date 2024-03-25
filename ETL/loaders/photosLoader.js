@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const csv = require('csv-parser');
-const { StylePhoto } = require('../../NoSql/denormModels');
+const { StylePhoto } = require('../../Server/db.js');
 
-mongoose.connect('mongodb://localhost/PRODUCTS', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/PROD', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const batchSize = 1000;
 let batch = [];
 let rowCount = 0;
 const object = [];
-const stream = fs.createReadStream('./data/photosC.csv').pipe(csv())
+const stream = fs.createReadStream('./data/photoC.csv').pipe(csv())
 //each row has an style_id, thumbnail_url, url
 //need push to batch if
   stream.on('data', (row) => {
