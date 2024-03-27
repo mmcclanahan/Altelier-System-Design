@@ -159,7 +159,7 @@ getStyle: async function(id) {
     for (const style of styles) {
       const photos = await StylePhoto.findOne({ style_id: style.style_id });
       const photosData = photos ? photos.photos : [];
-      const skus = await Sku.findOne({ style_id: style.style_id });
+      const skus = await SKU.findOne({ style_id: style.style_id });
       const skusData = skus ? skus.skus : [];
       const result = {
         product_id: style.product_id,
