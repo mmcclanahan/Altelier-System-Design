@@ -71,7 +71,7 @@ module.exports= {
     ])
   },
   */
-
+/*
   getStyle: function(id) {
   id = parseInt(id);
   return Style.aggregate([
@@ -147,8 +147,38 @@ module.exports= {
       }
     }
   ]);
+},*/
+getStyle: async function(id) {
+  try {
+    id = parseInt(id);
+    const styles = await Style.find({ product_id: id });
+    if (!styles || styles.length === 0) {
+      return [];
+    }
+    const results = [];
+    for (const style of styles) {
+      const photos = await StylePhoto.findOne({ style_id: style.style_id });
+      const photosData = photos ? photos.photos : [];
+      const skus = await Sku.findOne({ style_id: style.style_id });
+      const skusData = skus ? skus.skus : [];
+      const result = {
+        product_id: style.product_id,
+        style_id: style.style_id,
+        name: style.name,
+        sale_price: style.sale_price,
+        original_price: style.original_price,
+        default_style: style.default_style,
+        photos: photosData,
+        skus: skusData
+      };
+      results.push(result);
+    }
+    return results;
+  } catch (error) {
+    console.error('Error fetching styles:', error);
+    throw error;
+  }
 },
-
   getAllProductInfo: function(productId) {
     let id = parseInt(productId)
         return Product.aggregate([
