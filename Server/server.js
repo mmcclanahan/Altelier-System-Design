@@ -40,7 +40,7 @@ app.get('/product/related/:id', (req, res) => {
   })
 })
 //get all styles for a product
-app.get('/product/:id/styles', (req, res) => {
+app.get('/product/styles/:id', (req, res) => {
   getStyle(req.params.id)
   .then((response) => {
     res.status(200).send(response)
