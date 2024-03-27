@@ -240,24 +240,27 @@ module.exports= {
         ])
   },
   getRelatedIds: function(id) {
-    id = parseInt(id);
-    return RelatedProduct.aggregate([
-      {
-        $match: { product_id: id }
-      },
-      {
-        $unwind: "$related_ids"
-      },
-      {
-        $group: {
-          _id: "product_id",
-          related_ids: { $push: "$related_ids" }
-        }
-      }
-    ]);
+    return RelatedProduct.findOne({product_id:id})
   }
 }
 /*
+getRelatedIds: function(id) {
+  id = parseInt(id);
+  return RelatedProduct.aggregate([
+    {
+      $match: { product_id: id }
+    },
+    {
+      $unwind: "$related_ids"
+    },
+    {
+      $group: {
+        _id: "product_id",
+        related_ids: { $push: "$related_ids" }
+      }
+    }
+  ]);
+}
 getStyle: function(id) {
   id = parseInt(id);
   return Style.aggregate([
