@@ -240,7 +240,7 @@ module.exports= {
         ])
   },
   getRelatedIds: function(id) {
-    id = JSON.parse(id)
+    id = parseInt(id);
     return RelatedProduct.aggregate([
       {
         $match: { product_id: id }
