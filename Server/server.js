@@ -43,7 +43,6 @@ app.get('/product/related/:id', (req, res) => {
 app.get('/product/:id/styles', (req, res) => {
   getStyle(req.params.id)
   .then((response) => {
-    console.log(response)
     res.status(200).send(response)
   })
   .catch((error)=> {

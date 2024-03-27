@@ -241,6 +241,12 @@ module.exports= {
   },
   getRelatedIds: function(id) {
     return RelatedProduct.findOne({product_id:id})
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      return error;
+    });
   }
 }
 /*
