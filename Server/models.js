@@ -71,7 +71,7 @@ module.exports= {
     ])
   },
   */
-/*
+
   getStyle: function(id) {
   id = parseInt(id);
   return Style.aggregate([
@@ -147,7 +147,7 @@ module.exports= {
       }
     }
   ]);
-},*/
+},/*
 getStyle: async function(id) {
   try {
     const styles = await Style.find({ product_id: id });
@@ -177,7 +177,7 @@ getStyle: async function(id) {
     console.error('Error fetching styles:', error);
     throw error;
   }
-},
+},*/
   getAllProductInfo: function(productId) {
     let id = parseInt(productId)
         return Product.aggregate([
