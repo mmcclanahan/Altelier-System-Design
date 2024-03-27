@@ -4,7 +4,7 @@ const path = require("path");
 const app = express();
 //var router = require('./routes.js');
 const {getProductById, getAll, getAllProductInfo, getAllProductInfoByName, getRelatedIds, getStyle} = require('./models.js');
-//app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 //app.use('', router);
 
@@ -33,17 +33,18 @@ app.get('/product/:id', (req, res) => {
 app.get('/product/related/:id', (req, res) => {
   getRelatedIds(req.params.id)
   .then((result) => {
-    res.status(200).send(result[0].related_ids)
+    res.status(200).send(result)
   })
   .catch((err) => {
     res.status(500).send(err)
   })
 })
-
+//get all styles for a product
 app.get('/product/:id/styles', (req, res) => {
   getStyle(req.params.id)
   .then((response) => {
-    res.status(200).send(response[0].results)
+    console.log(response)
+    res.status(200).send(response)
   })
   .catch((error)=> {
     res.status(500).send(error)

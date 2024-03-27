@@ -1,6 +1,7 @@
 require("dotenv").config();
 const mongoose = require('mongoose');
-const mongoURL = `${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.URL}/${process.env.DB_NAME}`;
+const mongoURL = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.URL}:${process.env.PORT}/${process.env.DB_NAME}?authSource=admin`;
+//const mongoURL = `mongodb://localhost:27017/PROD`
 mongoose.connect(mongoURL)
   .then(() => {
     console.log(`connected to mongodb db: ${process.env.DB_NAME}`)
