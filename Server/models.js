@@ -150,6 +150,7 @@ module.exports= {
 },*/
 getStyle: async function(id) {
   try {
+    console.log('here',id)
     const styles = await Style.find({ product_id: id });
     if (!styles || styles.length === 0) {
       return [];
