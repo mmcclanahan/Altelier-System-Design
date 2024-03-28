@@ -11,7 +11,7 @@ app.use(express.json());
 const NodeCache = require("node-cache");
 const simpleProductCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 const styleCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
-
+//
 //get all styles for a product Stylefind(product_id) and photos and skus for styles
 //optimized aggregation with search for indexed value//
 app.get('/productDetails/:id', (req, res) => {
