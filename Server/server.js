@@ -8,9 +8,9 @@ const {getProductById, getAll, getAllProductInfo, getAllProductInfoByName, getRe
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 //cache
-//const NodeCache = require("node-cache");
-//const simpleProductCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
-//const styleCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
+const NodeCache = require("node-cache");
+const simpleProductCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
+const styleCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 //
 //get all styles for a product Stylefind(product_id) and photos and skus for styles
 //optimized aggregation with search for indexed value//
@@ -24,7 +24,7 @@ app.get('/productDetails/:id', (req, res) => {
     });
 })
 //get product and its simple details
-/*
+
 app.get('/product/:id', (req, res) => {
   const cachedResult = simpleProductCache.get(req.params.id);
   if (!cachedResult) {
@@ -39,7 +39,8 @@ app.get('/product/:id', (req, res) => {
   } else {
     res.status(200).send(cachedResult)
   }
-})*/
+})
+/*
 app.get('/product/:id', (req, res) => {
     getProductById(req.params.id)
     .then((response) => {
@@ -48,7 +49,7 @@ app.get('/product/:id', (req, res) => {
     .catch((error)=> {
       res.status(500).send(error)
     })
-})
+})*/
 //get related ids for a product
 app.get('/product/related/:id', (req, res) => {
   getRelatedIds(req.params.id)
@@ -60,7 +61,7 @@ app.get('/product/related/:id', (req, res) => {
   })
 })
 //get all styles for a product
-/*
+
 app.get('/product/styles/:id', (req, res) => {
   const cachedResult = styleCache.get(req.params.id);
   if (!cachedResult) {
@@ -76,7 +77,8 @@ app.get('/product/styles/:id', (req, res) => {
     res.status(200).send(cachedResult)
   }
 })
-*/
+
+/*
 app.get('/product/styles/:id', (req, res) => {
     getStyle(req.params.id)
     .then((response) => {
@@ -86,7 +88,7 @@ app.get('/product/styles/:id', (req, res) => {
       res.status(500).send(error)
     })
 })
-
+*/
 /*
 app.get('/cart', (req, res) => {
 
