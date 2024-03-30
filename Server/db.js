@@ -1,14 +1,20 @@
 require("dotenv").config();
 const mongoose = require('mongoose');
+
+//for aws
 const mongoURL = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.URL}:${process.env.PORT}/${process.env.DB_NAME}?authSource=admin`;
+//for local testing
 //const mongoURL = `mongodb://localhost:27017/PROD`
-mongoose.connect(mongoURL)
-  .then(() => {
-    console.log(`connected to mongodb db: ${process.env.DB_NAME}`)
-  })
-  .catch((err) => {
-    console.log('ERROR CONNECTING TO MONGODB', err)
-  })
+
+const db = mongoose.connect(mongoURL)
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('Connected to the database');
+});
+
+module.exports = db;
+
+
 //first connect to aws then connect to port
   const productSchema = mongoose.Schema({
       product_id: { type: Number, required: true, unique: true, index: true},

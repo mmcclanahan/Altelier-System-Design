@@ -1,4 +1,5 @@
-const {Product, Feature, Style, StylePhoto, SKU, RelatedProduct, Cart} = require('./db.js');
+const mongoose = require('mongoose');
+
 //make model functions
 module.exports= {
   getProductById: function(id) {
@@ -10,68 +11,6 @@ module.exports= {
         return error;
       });
   },
-  /*
-  getStyle: function(id) {
-    id = parseInt(id);
-    return Style.aggregate([
-      {
-        $match: {
-          product_id: id
-        }
-      },
-      {
-        $lookup: {
-          from: "stylephotos",
-          localField: "style_id",
-          foreignField: "style_id",
-          as: "photos"
-        }
-      },
-      {
-        $lookup: {
-          from: "skus",
-          localField: "style_id",
-          foreignField: "style_id",
-          as: "skus"
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          product_id: 1,
-          style_id: 1,
-          name: 1,
-          sale_price: 1,
-          original_price: 1,
-          default_style: 1,
-          photos: { $arrayElemAt: ["$photos.photos", 0] },
-          skus: { $arrayElemAt: ["$skus.skus", 0] }
-        }
-      },
-      {
-        $addFields: {
-          product_id: "$product_id"
-        }
-      },
-      {
-        $group: {
-          _id: "$product_id",
-          results: {
-            $push: "$$ROOT"
-          }
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          product_id: "$_id",
-          results: 1
-        }
-      }
-    ])
-  },
-  */
-
   getStyle: function(id) {
   id = parseInt(id);
   return Style.aggregate([
@@ -147,37 +86,7 @@ module.exports= {
       }
     }
   ]);
-},/*
-getStyle: async function(id) {
-  try {
-    const styles = await Style.find({ product_id: id });
-    if (!styles || styles.length === 0) {
-      return [];
-    }
-    const results = [];
-    for (const style of styles) {
-      const photos = await StylePhoto.findOne({ style_id: style.style_id });
-      const photosData = photos ? photos.photos : [];
-      const skus = await SKU.findOne({ style_id: style.style_id });
-      const skusData = skus ? skus.skus : [];
-      const result = {
-        product_id: style.product_id,
-        style_id: style.style_id,
-        name: style.name,
-        sale_price: style.sale_price,
-        original_price: style.original_price,
-        default_style: style.default_style,
-        photos: photosData,
-        skus: skusData
-      };
-      results.push(result);
-    }
-    return results;
-  } catch (error) {
-    console.error('Error fetching styles:', error);
-    throw error;
-  }
-},*/
+},
   getAllProductInfo: function(productId) {
     let id = parseInt(productId)
         return Product.aggregate([
@@ -278,105 +187,3 @@ getStyle: async function(id) {
     });
   }
 }
-/*
-getRelatedIds: function(id) {
-  id = parseInt(id);
-  return RelatedProduct.aggregate([
-    {
-      $match: { product_id: id }
-    },
-    {
-      $unwind: "$related_ids"
-    },
-    {
-      $group: {
-        _id: "product_id",
-        related_ids: { $push: "$related_ids" }
-      }
-    }
-  ]);
-}
-getStyle: function(id) {
-  id = parseInt(id);
-  return Style.aggregate([
-    {
-      $match: {
-        product_id: id
-      }
-    },
-    {
-      $lookup: {
-        from: "stylephotos",
-        let: { style_id: "$style_id" },
-        pipeline: [
-          {
-            $match: {
-              $expr: { $eq: ["$style_id", "$$style_id"] }
-            }
-          },
-          {
-            $project: {
-              _id: 0,
-              photos: 1
-            }
-          }
-        ],
-        as: "photos"
-      }
-    },
-    {
-      $lookup: {
-        from: "skus",
-        let: { style_id: "$style_id" },
-        pipeline: [
-          {
-            $match: {
-              $expr: { $eq: ["$style_id", "$$style_id"] }
-            }
-          },
-          {
-            $project: {
-              _id: 0,
-              skus: 1
-            }
-          }
-        ],
-        as: "skus"
-      }
-    },
-    {
-      $project: {
-        _id: 0,
-        product_id: 1,
-        style_id: 1,
-        name: 1,
-        sale_price: 1,
-        original_price: 1,
-        default_style: 1,
-        photos: { $arrayElemAt: ["$photos.photos", 0] },
-        skus: { $arrayElemAt: ["$skus.skus", 0] }
-      }
-    },
-    {
-      $addFields: {
-        product_id: "$product_id"
-      }
-    },
-    {
-      $group: {
-        _id: "$product_id",
-        results: {
-          $push: "$$ROOT"
-        }
-      }
-    },
-    {
-      $project: {
-        _id: 0,
-        product_id: "$_id",
-        results: 1
-      }
-    }
-  ]);
-}
-*/
