@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+const {Product, Style, SKU, StylePhoto, RelatedProduct} = require('./models.js')
 //make model functions
 module.exports= {
   getProductById: function(id) {
