@@ -16,12 +16,12 @@
 
 ### Built With
 
-[![Node](https://img.shields.io/badge/Node-%2520000000.svg?style=for-the-badge&logo=Node&color=black)]
-[![Node-Cache](https://img.shields.io/badge/Node--Cache-%2520000000.svg?style=for-the-badge&logo=Node-Cache&color=black)]
+![Node](https://img.shields.io/badge/Node-%2520000000.svg?style=for-the-badge&logo=Node&color=black)
+![Node-Cache](https://img.shields.io/badge/Node--Cache-%2520000000.svg?style=for-the-badge&logo=Node-Cache&color=black)
 [![Express](https://img.shields.io/badge/Express-%23000000.svg?style=for-the-badge&logo=Express)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-%2520000000.svg?style=for-the-badge&logo=MongoDB&color=black)](https://www.mongodb.com)
-[![NGINX](https://img.shields.io/badge/NGINX-%2520000000.svg?style=for-the-badge&logo=NGINX&color=black)]
-[![Mongoose.js](https://img.shields.io/badge/Mongoose.js-%2520000000.svg?style=for-the-badge&logo=mongoose.js&color=black)]
+![NGINX](https://img.shields.io/badge/NGINX-%2520000000.svg?style=for-the-badge&logo=NGINX&color=black)
+![Mongoose.js](https://img.shields.io/badge/Mongoose.js-%2520000000.svg?style=for-the-badge&logo=mongoose.js&color=black)
 
 ## Contact
 
