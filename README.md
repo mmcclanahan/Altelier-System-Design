@@ -1,17 +1,27 @@
 ## About
-ETL process transfering data from csv files to a MongoDB database
-Deployed DB to AWS EC2 instance
-Apply optimization techniques like horizontally scaling multiple servers using NGINX and Node-Cache.
-Scaled to handle 1000 requests/second with 0% error rate and 20ms response times
+<ul>
+  <li>
+    ETL process transfering data from csv files to a MongoDB database
+  </li>
+  <li>
+    Deployed DB to AWS EC2 instance  
+  </li>
+  <li>
+    Apply optimization techniques like horizontally scaling multiple servers using NGINX and Node-Cache.
+  </li>
+  <li>
+    Scaled to handle 1000 requests/second with 0% error rate and 20ms response times
+  </li>
+</ul>
 
 ### Built With
 
-[![React](https://img.shields.io/badge/React-%23000000.svg?style=for-the-badge&logo=react&logoColor)](https://react.dev/)
+[![Node](https://img.shields.io/badge/Node-%2520000000.svg?style=for-the-badge&logo=Node&color=black)]
+[![Node-Cache](https://img.shields.io/badge/Node--Cache-%2520000000.svg?style=for-the-badge&logo=Node-Cache&color=black)]
 [![Express](https://img.shields.io/badge/Express-%23000000.svg?style=for-the-badge&logo=Express)](https://expressjs.com/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
-[![Axios](https://img.shields.io/badge/Axios-007ACC?style=for-the-badge&logo=axios&logoColor=white)](https://axios-http.com/)
-[![.js](https://img.shields.io/badge/Moment.js-000000?style=for-the-badge&logo=moment&logoColor=white)](https://momentjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-%2520000000.svg?style=for-the-badge&logo=MongoDB&color=black)](https://www.mongodb.com)
+[![NGINX](https://img.shields.io/badge/NGINX-%2520000000.svg?style=for-the-badge&logo=NGINX&color=black)]
+[![Mongoose.js](https://img.shields.io/badge/Mongoose.js-%2520000000.svg?style=for-the-badge&logo=mongoose.js&color=black)]
 
 ## Contact
 
