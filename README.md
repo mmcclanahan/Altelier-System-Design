@@ -1,4 +1,6 @@
 ## About
+Replacing Altelier's existing API with a back end system that can support the full data set for the project and can scale to meet the demands of production traffic.
+Altelier provides users with millions of products and their respective styles.
 <ul>
   <li>
     ETL process transfering data from csv files to a MongoDB database
@@ -7,7 +9,7 @@
     Deployed DB to AWS EC2 instance  
   </li>
   <li>
-    Apply optimization techniques like horizontally scaling multiple servers using NGINX and Node-Cache.
+    Apply optimization techniques utilizing Node-Cache and horizontally scaling multiple servers using NGINX.
   </li>
   <li>
     Scaled to handle 1000 requests/second with 0% error rate and 20ms response times
